@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, Button, SafeAreaView, Image, TouchableHighlight, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import {getThongTinDen} from '../../Services/APIs'
 
 export const ThongTinGiaoThong = () => {
     const [area, onChangeText] = useState('');
@@ -28,8 +29,13 @@ export const ThongTinGiaoThong = () => {
                 <ImageBackground source = {{uri: 'https://www.mapsofworld.com/vietnam/maps/ho-chi-minh.jpg'}}
                     style = {{flex: 1, alignSelf: 'stretch', alignItems: 'center', justifyContent: 'center'}}
                 >
-                    <TouchableHighlight onPress = {() => {navigation.navigate('Thong tin giao thong chi tiet')}}
-                        underlayColor = 'clear'>
+                    <TouchableHighlight onPress = {async() => {
+                        const result = await getThongTinDen(1)
+                        setData(result)
+                        //console.log(data)
+                        navigation.navigate('Thong tin giao thong chi tiet', data)}}
+                        underlayColor = 'clear'
+                    >
                         <Image source = {{uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Traffic_lights_icon.svg/301px-Traffic_lights_icon.svg.png'}}
                             style = {{ height: 80, width: 40, resizeMode: 'contain'}}
                         />
