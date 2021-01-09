@@ -1,19 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, Button, SafeAreaView, ScrollView, TouchableHighlight } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 export const Home = () => {
-    const navigation = useNavigation();
+    const navigation = useNavigation()
+    const route = useRoute()
+    const auth = route.params
+    //console.log(auth.auth)
     return (
         <SafeAreaView style = {{padding: 15}}>
             <ScrollView>
-                <TouchableHighlight underlayColor = {'white'} onPress={() => {navigation.navigate('Quan ly tai xe')}}>
-                    <View style = {{backgroundColor: 'white', padding: 15, justifyContent: 'space-between', flexDirection: 'row', borderRadius: 5}}>
-                        <Text style = {{fontSize : 20, letterSpacing: 3}}>Quản lý tài xế</Text>
-                        <Text style = {{fontSize : 20, letterSpacing: 3}}>{'>'}</Text>
-                    </View>
-                </TouchableHighlight>
+                {auth.auth && auth.auth == 'admin' &&
+                    <TouchableHighlight underlayColor = {'white'} onPress={() => {navigation.navigate('Quan ly tai xe')}}>
+                        <View style = {{backgroundColor: 'white', padding: 15, justifyContent: 'space-between', flexDirection: 'row', borderRadius: 5}}>
+                            <Text style = {{fontSize : 20, letterSpacing: 3}}>Quản lý tài xế</Text>
+                            <Text style = {{fontSize : 20, letterSpacing: 3}}>{'>'}</Text>
+                        </View>
+                    </TouchableHighlight>
+                }
                 <View style = {{height: 15}}/>
                 <TouchableHighlight underlayColor = {'white'} onPress={() => {navigation.navigate('Quan ly bang lai')}}>
                     <View style = {{backgroundColor: 'white', padding: 15, justifyContent: 'space-between', flexDirection: 'row', borderRadius: 5}}>
