@@ -6,7 +6,7 @@ import {getThongTinDen} from '../../Services/APIs'
 
 export const ThongTinGiaoThong = () => {
     const [area, onChangeText] = useState('');
-    const [data, setData] = useState('abc');
+    let data = 'abc'
     const navigation = useNavigation();
     return (
         <SafeAreaView style = {{padding: 15, backgroundColor: 'white', alignSelf:'stretch', flex: 1}}>
@@ -30,8 +30,8 @@ export const ThongTinGiaoThong = () => {
                     style = {{flex: 1, alignSelf: 'stretch', alignItems: 'center', justifyContent: 'center'}}
                 >
                     <TouchableHighlight onPress = {async() => {
-                        const result = await getThongTinDen(1)
-                        setData(result)
+                        const result = await getThongTinDen(2)
+                        data = result.data
                         //console.log(data)
                         navigation.navigate('Thong tin giao thong chi tiet', data)}}
                         underlayColor = 'clear'
