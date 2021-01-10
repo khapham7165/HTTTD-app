@@ -155,7 +155,8 @@ export const TraCuuViPham = () => {
                     placeholder = {'Tài xế cần tìm'}
                 />
                 <TouchableHighlight onPress={async() => {
-                    setViPham(await axios.get(`https://localhost:44399/api/BaoCao/${nguoiViPham}`))
+                    const result = await axios.get(`https://localhost:44399/api/BaoCao/${nguoiViPham}`)
+                    setViPham(result.data)
                     setIsViPham(true)
                     setIsTatCaViPham(false)
                 }} underlayColor = 'white'>
@@ -167,7 +168,8 @@ export const TraCuuViPham = () => {
             </View>
             <View style = {{height: 15}}/>
             <Button title = {'Xem tất cả vi phạm'} onPress = {async() => {
-                setTatCaViPham(await axios.get(`https://localhost:44399/api/BaoCao`))
+                const result = await axios.get(`https://localhost:44399/api/BaoCao`)
+                setTatCaViPham(result.data)
                 setIsViPham(false)
                 setIsTatCaViPham(true)
             }}/>
