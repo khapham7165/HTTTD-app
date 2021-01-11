@@ -135,11 +135,11 @@ export const TraCuuViPham = () => {
             <View>
                 <View style = {{height: 15}}/>
                 <View style = {{backgroundColor: 'white', padding: 15, borderRadius: 10}}>
-                    <Text>Người vi phạm: {viPham.NguoiViPham}</Text>
-                    <Text>Địa điểm phạt: {viPham.DiaDiemPhat}</Text>
-                    <Text>Thời gian lập: {viPham.ThoiGianLap}</Text>
-                    <Text>Số tiền phạt: {viPham.TienPhat}k</Text>
-                    <Text>Tình trạng nộp phạt: {viPham.TinhTrangNopPhat}</Text>
+                    <Text>Người vi phạm: {viPham[0].NguoiViPham}</Text>
+                    <Text>Địa điểm phạt: {viPham[0].DiaDiemPhat}</Text>
+                    <Text>Thời gian lập: {viPham[0].ThoiGianLap}</Text>
+                    <Text>Số tiền phạt: {viPham[0].TienPhat}k</Text>
+                    <Text>Tình trạng nộp phạt: {viPham[0].TinhTrangNopPhat}</Text>
                 </View>
             </View>
         )
@@ -157,6 +157,7 @@ export const TraCuuViPham = () => {
                 <TouchableHighlight onPress={async() => {
                     const result = await axios.get(`https://localhost:44399/api/BaoCao/${nguoiViPham}`)
                     setViPham(result.data)
+                    console.log('result.data :>> ', result.data);
                     setIsViPham(true)
                     setIsTatCaViPham(false)
                 }} underlayColor = 'white'>
