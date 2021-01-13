@@ -40,7 +40,7 @@ export const BienBanViPham = () => {
                 />
                 <TouchableHighlight onPress={async() => {
                     const result = await axios.get(`https://localhost:44399/api/Xe/${IDxe}`)
-                    setXe(result)
+                    setXe(result.data)
                 }} underlayColor = 'white'>
                     <Image
                         source = {{uri: 'https://static.thenounproject.com/png/3134345-200.png'}}

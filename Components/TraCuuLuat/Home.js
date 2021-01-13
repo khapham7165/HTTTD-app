@@ -17,7 +17,7 @@ export const TraCuuLuat = () => {
         }
     ]);
     const [luat, setLuat] = useState(null)
-    const Laws = luat.map((item, i) => {
+    const Laws = luat && luat.map((item, i) => {
         return (
             <View>
                 <View style = {{height: 15}}/>
@@ -42,7 +42,7 @@ export const TraCuuLuat = () => {
                 />
                 <TouchableHighlight onPress={async() => {
                     result = await axios.get(`https://localhost:44399/api/LuatGiaoThong/${IDLuat}`)
-                    setLuat(result)
+                    setLuat(result.data)
                 }} underlayColor = 'white'>
                     <Image
                         source = {{uri: 'https://static.thenounproject.com/png/3134345-200.png'}}
