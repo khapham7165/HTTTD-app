@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, Button, SafeAreaView, TouchableHighlight, Image} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import {axios} from 'axios';
+import axios from 'axios';
 
 export const BienBanViPham = () => {
     const [IDxe, onChangeText] = useState('');
@@ -13,16 +13,16 @@ export const BienBanViPham = () => {
             <View>
                 <View style = {{height: 15}}/>
                 <View style = {{backgroundColor: 'white', padding: 15, borderRadius: 10}}>
-                    <Text>Hãng xe: {xe.Hang}</Text>
-                    <Text>Loại xe: {xe.Loai}</Text>
-                    <Text>Màu sắc: {xe.MauSac}</Text>
-                    <Text>Năm: {xe.Nam}</Text>
-                    <Text>Trạng thái: {xe.TrangThai}</Text>
+                    <Text>Hãng xe: {xe[0].Hang}</Text>
+                    <Text>Loại xe: {xe[0].Loai}</Text>
+                    <Text>Màu sắc: {xe[0].MauSac}</Text>
+                    <Text>Năm: {xe[0].Nam}</Text>
+                    <Text>Trạng thái: {xe[0].TrangThai}</Text>
                     <Text>---------------------------</Text>
-                    <Text>Chủ xe: {xe.Chuxe.HoTen}</Text>
-                    <Text>Năm sinh: {xe.Chuxe.NamSinh}</Text>
-                    <Text>CMND: {xe.Chuxe.CMND}</Text>
-                    <Text>Địa chỉ: {xe.Chuxe.DiaChi}</Text>
+                    <Text>Chủ xe: {xe[0].Chuxe.HoTen}</Text>
+                    <Text>Năm sinh: {xe[0].Chuxe.NamSinh}</Text>
+                    <Text>CMND: {xe[0].Chuxe.CMND}</Text>
+                    <Text>Địa chỉ: {xe[0].Chuxe.DiaChi}</Text>
                 </View>
             </View>
         )

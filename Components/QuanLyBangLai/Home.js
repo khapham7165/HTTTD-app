@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, Button, SafeAreaView, TouchableHighlight, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import {axios} from 'axios';
+import axios from 'axios';
 
 export const QuanLyBangLai = () => {
     const [inputText, onChangeText] = useState('');
@@ -33,6 +33,7 @@ export const QuanLyBangLai = () => {
                 />
                 <TouchableHighlight onPress={async() => {
                     const result = await axios.get(`https://localhost:44399/api/banglai/${inputText}`);
+                    console.log('result - ' + result)
                     setBangLai(result.data);
                 }} underlayColor = 'white'>
                     <Image

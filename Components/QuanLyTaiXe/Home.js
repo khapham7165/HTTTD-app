@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, Button, SafeAreaView, TouchableHighlight, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import * as axios from 'axios'
+import axios from 'axios'
 
 export const QuanLyTaiXe = () => {
     const [taiXeCanTim, onChangeText] = useState('');
@@ -39,7 +39,8 @@ export const QuanLyTaiXe = () => {
                     placeholder = {'Tài xế cần tìm'}
                 />
                 <TouchableHighlight onPress={async() => {
-                    const result = await axios.get(`https://localhost:44399/api/Chuxe/${taiXeCanTim})`)
+                    const result = await axios.get(`https://localhost:44399/api/Chuxe/${taiXeCanTim}`)
+                    console.log(result)
                     setTaiXe(result.data)
                 }} underlayColor = 'white'>
                     <Image
