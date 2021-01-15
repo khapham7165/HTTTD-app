@@ -5,27 +5,18 @@ import { useNavigation } from '@react-navigation/native';
 import axios from 'axios'
 
 export const TraCuuLuat = () => {
-    const [IDLuat, onChangeText] = useState('');
-    const [data, setData] = useState([
-        {
-          "$id": "1",
-          "Id": 1,
-          "NoiDungLuat": "Xi nhan khi chuyển làn",
-          "LanCapNhat": 1,
-          "NgayCapNhat": "1/10/2020",
-          "MucPhat": 200000
-        }
-    ]);
-    const [luat, setLuat] = useState(null)
-    const Laws = luat && (() => {
+    const [tuKhoa, onChangeText] = useState('');
+    const [data, setData] = useState([{"$id":"1","Id":2,"NoiDungLuat":"Xi nhan khi chuyển làn","LanCapNhat":1,"NgayCapNhat":"1/10/2020","MucPhat":200000,"ViPhamLuatGTs":null},{"$id":"2","Id":3,"NoiDungLuat":"Xi nhan khi chuyển hướng","LanCapNhat":1,"NgayCapNhat":"1/10/2020","MucPhat":500000,"ViPhamLuatGTs":null},{"$id":"3","Id":6,"NoiDungLuat":"Không xi nhan, còi khi vượt trước","LanCapNhat":1,"NgayCapNhat":"1/10/2020","MucPhat":200000,"ViPhamLuatGTs":null}]);
+    const [luat, setLuat] = useState(data)
+    const Laws = luat && luat.map((item, i) => {
         return (
             <View>
                 <View style = {{height: 15}}/>
                 <View style = {{backgroundColor: 'white', padding: 15, borderRadius: 10}}>
-                    <Text>Tên: {luat.Id}</Text>
-                    <Text>Chi tiết: {luat.NoiDungLuat}</Text>
-                    <Text>Ngày cập nhật: {luat.NgayCapNhat}</Text>
-                    <Text>Mức phạt: {luat.MucPhat} VNĐ</Text>
+                    <Text>Tên: {item.Id}</Text>
+                    <Text>Chi tiết: {item.NoiDungLuat}</Text>
+                    <Text>Ngày cập nhật: {item.NgayCapNhat}</Text>
+                    <Text>Mức phạt: {item.MucPhat} VNĐ</Text>
                 </View>
             </View>
         )
@@ -37,11 +28,11 @@ export const TraCuuLuat = () => {
                 <TextInput
                     style={{ height: 40, borderColor: 'gray', borderWidth: 1, padding : 10, borderRadius : 5, flex: 0.98, alignSelf: 'stretch'}}
                     onChangeText={text => onChangeText(text)}
-                    value={IDLuat}
+                    value={tuKhoa}
                     placeholder = {'Id luật cần tìm'}
                 />
                 <TouchableHighlight onPress={async() => {
-                    const result = await axios.get(`https://localhost:44399/api/LuatGiaoThong/${IDLuat}`)
+                    const result = await axios.get(`https://localhost:44399/api/LuatGiaoThong/search/${tuKhoa}`)
                     setLuat(result.data)
                 }} underlayColor = 'white'>
                     <Image
@@ -50,7 +41,7 @@ export const TraCuuLuat = () => {
                     />
                 </TouchableHighlight>
             </View>
-            {luat && Laws()}
+            {luat && Laws}
         </SafeAreaView>
     )
 }
