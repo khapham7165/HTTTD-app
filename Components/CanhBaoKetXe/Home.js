@@ -17,8 +17,8 @@ export const CanhBaoKetXe = () => {
             <View>
                 <View style = {{height: 15}}/>
                 <View style = {{backgroundColor: 'white', padding: 15, borderRadius: 10}}>
-                    {!canhBaoKetXe.KhuVuc.TenKhuVuc && canhBaoKetXe.Id.toString() == inputText2 && <Text>Tên đường: {canhBaoKetXe.TenDuong}</Text>}
-                    {!canhBaoKetXe.KhuVuc.TenKhuVuc && canhBaoKetXe.Id.toString() == inputText2 && <Text>Trạng thái: {canhBaoKetXe.TrangThai}</Text>}
+                    {<Text>Tên đường: {canhBaoKetXe.TenDuong}</Text>}
+                    {<Text>Trạng thái: {canhBaoKetXe.TrangThai}</Text>}
                     {canhBaoKetXe.KhuVuc.TenKhuVuc && <Text>Tên khu vực: {canhBaoKetXe.KhuVuc.TenKhuVuc}</Text>}
                     {canhBaoKetXe.KhuVuc.TinhTrangDuongs && <Text>Tổng số đường trong khu vực: {canhBaoKetXe.KhuVuc.TinhTrangDuongs.length}</Text>}
                 </View>

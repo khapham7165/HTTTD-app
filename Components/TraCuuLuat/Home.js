@@ -7,7 +7,7 @@ import axios from 'axios'
 export const TraCuuLuat = () => {
     const [tuKhoa, onChangeText] = useState('');
     const [data, setData] = useState([{"$id":"1","Id":2,"NoiDungLuat":"Xi nhan khi chuyển làn","LanCapNhat":1,"NgayCapNhat":"1/10/2020","MucPhat":200000,"ViPhamLuatGTs":null},{"$id":"2","Id":3,"NoiDungLuat":"Xi nhan khi chuyển hướng","LanCapNhat":1,"NgayCapNhat":"1/10/2020","MucPhat":500000,"ViPhamLuatGTs":null},{"$id":"3","Id":6,"NoiDungLuat":"Không xi nhan, còi khi vượt trước","LanCapNhat":1,"NgayCapNhat":"1/10/2020","MucPhat":200000,"ViPhamLuatGTs":null}]);
-    const [luat, setLuat] = useState(data)
+    const [luat, setLuat] = useState(null)
     const Laws = luat && luat.map((item, i) => {
         return (
             <View>
