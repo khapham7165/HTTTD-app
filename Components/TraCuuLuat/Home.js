@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, Button, SafeAreaView, TouchableHighlight, Image} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import {axios} from 'axios'
+import axios from 'axios'
 
 export const TraCuuLuat = () => {
     const [IDLuat, onChangeText] = useState('');
@@ -17,15 +17,15 @@ export const TraCuuLuat = () => {
         }
     ]);
     const [luat, setLuat] = useState(null)
-    const Laws = luat && luat.map((item, i) => {
+    const Laws = luat && (() => {
         return (
             <View>
                 <View style = {{height: 15}}/>
                 <View style = {{backgroundColor: 'white', padding: 15, borderRadius: 10}}>
-                    <Text>Tên: {item.Id}</Text>
-                    <Text>Chi tiết: {item.NoiDungLuat}</Text>
-                    <Text>Ngày cập nhật: {item.NgayCapNhat}</Text>
-                    <Text>Mức phạt: {item.MucPhat} VNĐ</Text>
+                    <Text>Tên: {luat.Id}</Text>
+                    <Text>Chi tiết: {luat.NoiDungLuat}</Text>
+                    <Text>Ngày cập nhật: {luat.NgayCapNhat}</Text>
+                    <Text>Mức phạt: {luat.MucPhat} VNĐ</Text>
                 </View>
             </View>
         )
@@ -41,7 +41,7 @@ export const TraCuuLuat = () => {
                     placeholder = {'Id luật cần tìm'}
                 />
                 <TouchableHighlight onPress={async() => {
-                    result = await axios.get(`https://localhost:44399/api/LuatGiaoThong/${IDLuat}`)
+                    const result = await axios.get(`https://localhost:44399/api/LuatGiaoThong/${IDLuat}`)
                     setLuat(result.data)
                 }} underlayColor = 'white'>
                     <Image
@@ -50,7 +50,7 @@ export const TraCuuLuat = () => {
                     />
                 </TouchableHighlight>
             </View>
-            {luat && Laws}
+            {luat && Laws()}
         </SafeAreaView>
     )
 }
